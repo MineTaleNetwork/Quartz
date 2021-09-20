@@ -5,6 +5,7 @@ import cc.minetale.quartz.config.ConfigLoader;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.minestom.server.MinecraftServer;
+import net.minestom.server.extras.MojangAuth;
 import net.minestom.server.extras.velocity.VelocityProxy;
 
 import java.io.File;
@@ -28,9 +29,10 @@ public class QuartzServer {
 
             MinecraftServer.setBrandName("§b§lQuartz§r");
 
-            MinecraftServer.getCommandManager().setUnknownCommandCallback((sender, command) -> sender.sendMessage(Component.text("You have entered an unknown command.", NamedTextColor.RED)));
-
-            VelocityProxy.enable(config.getVelocitySecret());
+            if(config.isVelocityEnabled())
+                VelocityProxy.enable(config.getVelocitySecret());
+            else
+                MojangAuth.init();
 
             minecraftServer.start(config.getAddress(), config.getPort());
         }
