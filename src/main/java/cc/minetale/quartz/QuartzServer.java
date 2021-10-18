@@ -14,27 +14,27 @@ import java.io.IOException;
 public class QuartzServer {
 
     public static void main(String[] args) {
-        Config config = null;
-
         try {
             File configFile = new File("config.json");
-            config = ConfigLoader.loadConfig(new Config(), configFile);
+            Config config = ConfigLoader.loadConfig(new Config(), configFile);
+
+            if(config != null) {
+                MinecraftServer minecraftServer = MinecraftServer.init();
+
+                MinecraftServer.setBrandName("§b§lQuartz§r");
+
+                if (config.isVelocityEnabled())
+                    VelocityProxy.enable(config.getVelocitySecret());
+                else
+                    MojangAuth.init();
+
+                minecraftServer.start(config.getAddress(), config.getPort());
+            } else {
+                MinecraftServer.stopCleanly();
+            }
         } catch (IOException e) {
             e.printStackTrace();
             MinecraftServer.stopCleanly();
-        }
-
-        if(config != null) {
-            MinecraftServer minecraftServer = MinecraftServer.init();
-
-            MinecraftServer.setBrandName("§b§lQuartz§r");
-
-            if(config.isVelocityEnabled())
-                VelocityProxy.enable(config.getVelocitySecret());
-            else
-                MojangAuth.init();
-
-            minecraftServer.start(config.getAddress(), config.getPort());
         }
     }
 
