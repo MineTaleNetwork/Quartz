@@ -20,7 +20,7 @@ public class ConfigLoader {
         }
 
         if (file.createNewFile()) {
-            String json = gson.toJson(JsonParser.parseString(gson.toJson(config)));
+            String json = gson.toJson(config);
             try (PrintWriter out = new PrintWriter(file)) {
                 out.println(json);
             }
@@ -33,7 +33,7 @@ public class ConfigLoader {
 
     public static void saveConfig(Object config, File file) throws IOException {
         file.createNewFile();
-        String json = gson.toJson(JsonParser.parseString(gson.toJson(config)));
+        String json = gson.toJson(config);
         try (PrintWriter out = new PrintWriter(file)) {
             out.println(json);
         }

@@ -21,7 +21,7 @@ public class QuartzServer {
             if(config != null) {
                 MinecraftServer minecraftServer = MinecraftServer.init();
 
-                MinecraftServer.setBrandName("§b§lQuartz§r");
+                MinecraftServer.setBrandName("Quartz");
 
                 if (config.isVelocityEnabled())
                     VelocityProxy.enable(config.getVelocitySecret());
