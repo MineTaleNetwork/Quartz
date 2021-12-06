@@ -36,7 +36,7 @@ shadowJar {
 
 jar {
     manifest {
-        attributes 'Main-Class': "cc.minetale.quartz.Main", "Multi-Release": true
+        attributes 'Main-Class': "cc.minetale.quartz.BootStrap", "Multi-Release": true
     }
 }
 
@@ -52,4 +52,4 @@ tasks.withType(Jar) {
     destinationDirectory = file("../../Build")
 }
 
-task buildJar(dependsOn: ['clean', 'publishToMavenLocal'])
+task buildJar(dependsOn: ['publishToMavenLocal'])
