@@ -18,7 +18,7 @@ dependencies {
     compileOnly         group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
 
-    implementation group: 'com.github.Minestom', name: 'Minestom', version: '1.18-SNAPSHOT'
+    implementation group: 'com.github.Minestom', name: 'Minestom', version: 'c63e4cb'
 }
 
 sourceCompatibility = 17
@@ -35,7 +35,7 @@ shadowJar {
 
 jar {
     manifest {
-        attributes 'Main-Class': "cc.minetale.quartz.BootStrap", "Multi-Release": true
+        attributes 'Main-Class': "cc.minetale.quartz.Quartz", "Multi-Release": true
     }
 }
 
