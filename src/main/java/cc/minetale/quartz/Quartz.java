@@ -11,13 +11,15 @@ public class Quartz {
 
         MinecraftServer.setBrandName("Quartz");
 
-        if (Boolean.getBoolean("velocityEnabled")) {
-            VelocityProxy.enable(System.getProperty("velocitySecret", "none"));
+        var velocity = System.getProperty("velocitySecret", "none");
+
+        if(!velocity.equals("none")) {
+            VelocityProxy.enable(velocity);
         } else {
             MojangAuth.init();
         }
 
-        minecraftServer.start(System.getProperty("bindAddress", "0.0.0.0"), Integer.getInteger("serverPort", 25565));
+        minecraftServer.start(System.getProperty("bindAddress", "0.0.0.0"), Integer.getInteger("bindPort", 25565));
     }
 
 }
