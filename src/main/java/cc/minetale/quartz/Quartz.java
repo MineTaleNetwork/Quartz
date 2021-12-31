@@ -12,7 +12,7 @@ public class Quartz {
         MinecraftServer.setBrandName("Quartz");
 
         if (Boolean.getBoolean("velocityEnabled")) {
-            VelocityProxy.enable(System.getProperty("velocitySecret", ""));
+            VelocityProxy.enable(System.getProperty("velocitySecret", "none"));
         } else {
             MojangAuth.init();
         }
