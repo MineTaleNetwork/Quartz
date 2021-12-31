@@ -46,9 +46,3 @@ publishing {
         }
     }
 }
-
-tasks.withType(Jar) {
-    destinationDirectory = file("../../Build")
-}
-
-task buildJar(dependsOn: ['publishToMavenLocal'])
